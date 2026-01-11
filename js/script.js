@@ -8,18 +8,12 @@ dropdown.addEventListener("click", (e) => {
 const addBtn = document.getElementById("add-post-btn");
 const popup = document.getElementById("popup");
 const closeBtn = document.getElementById("close-popup");
-const postForm = document. getElementById("post-form");
+const postForm = document.getElementById("post-form");
 const postGrid = document.getElementById("post-grid");
+const popupTitle = document.getElementById("popup-title");
+const submitBtn = document.getElementById("submit-btn");
 
-// Open popup
-addBtn.addEventListener("click", () => {
-    popup.classList.remove("hidden");
-});
-
-// Close popup
-closeBtn. addEventListener("click", () => {
-    popup.classList.add("hidden");
-});
+let editingPostId = null;
 
 // Get time ago string
 function getTimeAgo(date) {
@@ -61,66 +55,243 @@ function getAvatarColor() {
     return colors[Math.floor(Math.random() * colors.length)];
 }
 
-// Submit a post
+// Generate unique ID
+function generateId() {
+    return Date.now().toString(36) + Math.random().toString(36).substr(2);
+}
+
+// Load posts from localStorage
+function loadPosts() {
+    const posts = JSON.parse(localStorage. getItem('innovateLanePosts')) || [];
+    postGrid.innerHTML = '';
+    posts.reverse().forEach(post => {
+        renderPost(post);
+    });
+}
+
+// Save posts to localStorage
+function savePosts(posts) {
+    localStorage.setItem('innovateLanePosts', JSON.stringify(posts));
+}
+
+// Render a single post
+function renderPost(post) {
+    const card = document.createElement("div");
+    card.classList.add("post-card");
+    card.id = `post-${post.id}`;
+    
+    const avatar = getAvatar(post.author);
+    const timestamp = getTimeAgo(new Date(post.createdAt));
+    
+    card.innerHTML = `
+        <div class="post-header">
+            <div class="post-header-left">
+                <div class="post-avatar" style="background-color: ${post.avatarColor}">${avatar}</div>
+                <div class="post-user-info">
+                    <p class="post-author">${post.author}</p>
+                    <p class="post-time">${timestamp}</p>
+                </div>
+            </div>
+            <div class="post-menu">
+                <button class="post-menu-btn" data-post-id="${post.id}">⋮</button>
+                <div class="post-menu-dropdown">
+                    <button class="edit-btn" data-post-id="${post.id}">Edit</button>
+                    <button class="delete-btn delete" data-post-id="${post. id}">Delete</button>
+                </div>
+            </div>
+        </div>
+        ${post.imageURL ? `<img src="${post.imageURL}" class="post-image" alt="${post.title}">` : ""}
+        <h3 class="post-title">${post.title}</h3>
+        <p class="post-description">${post.description}</p>
+        ${post.link ?  `<a href="${post.link}" target="_blank" class="post-link">View Project →</a>` : ""}
+        ${post.contact ? `<p class="post-contact">Contact: ${post.contact}</p>` : ""}
+        <div class="post-footer">
+            <button class="post-like-btn" data-post-id="${post.id}">❤️</button>
+            <span class="post-like-count">${post.likes}</span>
+        </div>
+    `;
+
+    // Menu toggle
+    const menuBtn = card.querySelector(".post-menu-btn");
+    const dropdown = card.querySelector(".post-menu-dropdown");
+    
+    menuBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle("show");
+    });
+
+    document.addEventListener("click", () => {
+        dropdown.classList.remove("show");
+    });
+
+    // Edit button
+    const editBtn = card.querySelector(".edit-btn");
+    editBtn.addEventListener("click", () => {
+        editPost(post.id);
+        dropdown.classList.remove("show");
+    });
+
+    // Delete button
+    const deleteBtn = card.querySelector(".delete-btn");
+    deleteBtn.addEventListener("click", () => {
+        deletePost(post.id);
+        dropdown.classList.remove("show");
+    });
+
+    // Like button
+    const likeBtn = card.querySelector(".post-like-btn");
+    const likeCount = card.querySelector(".post-like-count");
+
+    likeBtn.addEventListener("click", () => {
+        const posts = JSON.parse(localStorage.getItem('innovateLanePosts')) || [];
+        const postIndex = posts.findIndex(p => p.id === post.id);
+        if (postIndex !== -1) {
+            if (likeBtn.classList.contains("liked")) {
+                likeBtn.classList.remove("liked");
+                posts[postIndex].likes--;
+            } else {
+                likeBtn.classList.add("liked");
+                posts[postIndex].likes++;
+            }
+            likeCount.textContent = posts[postIndex].likes;
+            savePosts(posts);
+        }
+    });
+
+    // Set liked state if already liked
+    if (post.likes > 0) {
+        likeBtn.classList.add("liked");
+    }
+
+    postGrid. appendChild(card);
+}
+
+// Edit post
+function editPost(postId) {
+    const posts = JSON.parse(localStorage.getItem('innovateLanePosts')) || [];
+    const post = posts.find(p => p. id === postId);
+    
+    if (!post) return;
+
+    // Fill form with post data
+    document.getElementById("title").value = post.title;
+    document.getElementById("author").value = post.author;
+    document.getElementById("description").value = post.description;
+    document.getElementById("link").value = post.link || "";
+    document.getElementById("contact").value = post.contact || "";
+
+    // Update UI
+    editingPostId = postId;
+    popupTitle.textContent = "Edit Post";
+    submitBtn.textContent = "Update";
+    popup.classList.remove("hidden");
+}
+
+// Delete post
+function deletePost(postId) {
+    if (confirm("Are you sure you want to delete this post?")) {
+        let posts = JSON.parse(localStorage. getItem('innovateLanePosts')) || [];
+        posts = posts.filter(p => p. id !== postId);
+        savePosts(posts);
+        loadPosts();
+    }
+}
+
+// Open popup
+addBtn.addEventListener("click", () => {
+    editingPostId = null;
+    popupTitle.textContent = "Create a Post";
+    submitBtn.textContent = "Post";
+    postForm.reset();
+    popup.classList.remove("hidden");
+});
+
+// Close popup
+closeBtn.addEventListener("click", () => {
+    popup.classList.add("hidden");
+    editingPostId = null;
+});
+
+// Close popup when clicking outside
+popup.addEventListener("click", (e) => {
+    if (e. target === popup) {
+        popup.classList.add("hidden");
+        editingPostId = null;
+    }
+});
+
+// Submit form (create or update)
 postForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const title = document.getElementById("title").value;
     const author = document.getElementById("author").value;
-    const description = document.getElementById("description").value;
+    const description = document. getElementById("description").value;
     const contact = document.getElementById("contact").value;
-    const link = document.getElementById("link").value;
+    const link = document. getElementById("link").value;
     const imageInput = document.getElementById("image");
     
-    let imageURL = "";
-    if (imageInput.files && imageInput.files[0]) {
-        imageURL = URL.createObjectURL(imageInput.files[0]);
-    }
-
-    const card = document.createElement("div");
-    card.classList.add("post-card");
+    let posts = JSON.parse(localStorage.getItem('innovateLanePosts')) || [];
     
-    const avatarColor = getAvatarColor();
-    const avatar = getAvatar(author);
-    const timestamp = getTimeAgo(new Date());
-    
-    card.innerHTML = `
-        <div class="post-header">
-            <div class="post-avatar" style="background-color: ${avatarColor}">${avatar}</div>
-            <div class="post-user-info">
-                <p class="post-author">${author}</p>
-                <p class="post-time">${timestamp}</p>
-            </div>
-        </div>
-        ${imageURL ? `<img src="${imageURL}" class="post-image" alt="${title}">` : ""}
-        <h3 class="post-title">${title}</h3>
-        <p class="post-description">${description}</p>
-        ${link ? `<a href="${link}" target="_blank" class="post-link">View Project →</a>` : ""}
-        ${contact ? `<p class="post-contact">Contact: ${contact}</p>` : ""}
-        <div class="post-footer">
-            <button class="post-like-btn" data-likes="0">❤️</button>
-            <span class="post-like-count">0</span>
-        </div>
-    `;
-
-    // Add like functionality
-    const likeBtn = card.querySelector(".post-like-btn");
-    const likeCount = card.querySelector(".post-like-count");
-    let likes = 0;
-
-    likeBtn.addEventListener("click", () => {
-        if (likeBtn.classList.contains("liked")) {
-            likeBtn.classList.remove("liked");
-            likes--;
-        } else {
-            likeBtn.classList.add("liked");
-            likes++;
+    if (editingPostId) {
+        // Update existing post
+        const postIndex = posts.findIndex(p => p.id === editingPostId);
+        if (postIndex !== -1) {
+            posts[postIndex]. title = title;
+            posts[postIndex].author = author;
+            posts[postIndex].description = description;
+            posts[postIndex].contact = contact;
+            posts[postIndex].link = link;
+            
+            // Only update image if a new one was selected
+            if (imageInput.files && imageInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    posts[postIndex].imageURL = e.target.result;
+                    savePosts(posts);
+                    loadPosts();
+                };
+                reader.readAsDataURL(imageInput.files[0]);
+            } else {
+                savePosts(posts);
+                loadPosts();
+            }
         }
-        likeCount.textContent = likes;
-    });
+    } else {
+        // Create new post
+        const newPost = {
+            id: generateId(),
+            title,
+            author,
+            description,
+            contact,
+            link,
+            avatarColor: getAvatarColor(),
+            createdAt: new Date().toISOString(),
+            likes: 0,
+            imageURL: ""
+        };
 
-    postGrid.insertBefore(card, postGrid. firstChild);
+        if (imageInput.files && imageInput.files[0]) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                newPost. imageURL = e.target.result;
+                posts.unshift(newPost);
+                savePosts(posts);
+                loadPosts();
+            };
+            reader.readAsDataURL(imageInput.files[0]);
+        } else {
+            posts.unshift(newPost);
+            savePosts(posts);
+            loadPosts();
+        }
+    }
 
     postForm.reset();
     popup.classList.add("hidden");
+    editingPostId = null;
 });
+
+// Load posts on page load
+loadPosts();

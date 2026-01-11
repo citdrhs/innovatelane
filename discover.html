@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<! DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InnovateLane</title>
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" href="./media/img/logo. jpg">
+    <link rel="icon" href="./media/img/logo.jpg">
 </head>
 
 <body>
@@ -51,15 +51,15 @@
     <!-- Popup Form -->
     <div id="popup" class="popup hidden">
         <div class="popup-content">
-            <h2>Create a Post</h2>
+            <h2 id="popup-title">Create a Post</h2>
             <form id="post-form">
                 <input type="text" id="title" placeholder="Project title" required>
                 <input type="text" id="author" placeholder="Your name" required>
                 <textarea id="description" placeholder="Describe your idea..." required></textarea>
                 <input type="url" id="link" placeholder="Project link (optional)">
-                <input tpype="text" id="contact" placeholder="Contact info (optional)">
+                <input type="text" id="contact" placeholder="Contact info (optional)">
                 <input type="file" id="image" accept="image/*" placeholder="Upload image (optional)">
-                <button type="submit">Post</button>
+                <button type="submit" id="submit-btn">Post</button>
                 <button type="button" id="close-popup" class="close-btn">Cancel</button>
             </form>
         </div>
