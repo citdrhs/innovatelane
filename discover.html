@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<! DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,7 +18,7 @@
                 </a>
             </div>
             <div class="menu-dropdown" id="menu-dropdown">
-                <img width="20px" height="20px" src="./media/img/dropdown.png"
+                <img width="20px" height="20px" src="./media/img/dropdown. png"
                     alt=">">
             </div>
             <div class="navigation__list" id="navigation__list">
@@ -37,17 +37,35 @@
                     <a class="navigation__link" href="#">Log In</a>
                 </div>
             </div>
-            <script src="./js/script.js"></script>
         </nav>
     </header>
-    <h1>Welcome to InnovateLane.</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, dolores.</p>
-    <div class="intro-image">
-        <center>
-        <img src="./media/img/pic.png"
-            alt="intro image">
-        <center>
+    
+    <h1>Check Out Project In Your Community</h1>
+    
+    <!--Grid of posts-->
+    <div id="post-grid" class="post-grid"></div>
+
+    <!-- Floating + button -->
+    <button id="add-post-btn" class="floating-btn">+</button>
+
+    <!-- Popup Form -->
+    <div id="popup" class="popup hidden">
+        <div class="popup-content">
+            <h2 id="popup-title">Create a Post</h2>
+            <form id="post-form">
+                <input type="text" id="title" placeholder="Project title" required>
+                <input type="text" id="author" placeholder="Your name" required>
+                <textarea id="description" placeholder="Describe your idea..." required></textarea>
+                <input type="url" id="link" placeholder="Project link (optional)">
+                <input type="text" id="contact" placeholder="Contact info (optional)">
+                <input type="file" id="image" accept="image/*" placeholder="Upload image (optional)">
+                <button type="submit" id="submit-btn">Post</button>
+                <button type="button" id="close-popup" class="close-btn">Cancel</button>
+            </form>
+        </div>
     </div>
+    
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
