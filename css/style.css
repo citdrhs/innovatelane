@@ -2,11 +2,16 @@ body {
     font-family:Georgia, 'Times New Roman', Times, serif
 }
 
+:root {
+    --blue: rgb(215, 255, 255);
+    --darkblue: rgb(0, 132, 255);
+} 
+
 .navigation {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    background-color: rgb(215, 255, 255);
+    background-color: var(--blue);
 }
 
 .logo {
@@ -75,4 +80,119 @@ p {
 
 .open {
     display: flex;
+}
+/* Grid for posts */
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+    
+/* Post cards */
+.post-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+    
+/* Floating + button */
+.floating-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    font-size: 35px;
+    border-radius: 50%;
+    border: none;
+    background: var(--darkblue);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+    
+/* Popup overlay */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    
+/* Hide popup */
+.hidden {
+    display: none;
+}
+    
+/* Popup box */
+.popup-content {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    width: 350px;
+}
+    
+/* Popup form buttons */
+.close-btn {
+    background: var(--darkblue);
+    color: white;
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+}
+
+#popup{
+    position: center
+    
+}
+.close-btn:hover {
+    background: rgb(0, 118, 228);
+}
+
+#post-form input,
+#post-form textarea {
+width: 100%;
+padding: 10px;
+margin: 8px 0;
+border-radius: 8px;
+border: 1px solid #ccc;
+font-size: 16px;
+font-family: Georgia, 'Times New Roman', Times, serif;
+box-sizing: border-box;
+}
+
+#post-form textarea {
+height: 120px;
+resize: none;
+}
+
+.popup-content h2 {
+text-align: center;
+margin-bottom: 15px;
+}
+
+#post-form button[type="submit"] {
+background: #4CAF50;
+color: white;
+padding: 10px;
+width: 100%;
+border: none;
+border-radius: 8px;
+margin-top: 10px;
+cursor: pointer;
+font-size: 16px;
+}
+
+#post-form button[type="submit"]:hover {
+background: #45a049;
 }
