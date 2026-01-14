@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnovateLane</title>
+    <link rel="stylesheet" href="/static/css/account.css">
+    <link rel="icon" href="/static/media/img/logo.png">
+</head>
+
+<body>
+    <header class="header show-on-scroll">
+        <nav id="navigation" class="navigation">
+            <a class="navigation__link" href="http://localhost:5000/homeclone">
+                <img class="logo"
+                    src="/static/media/img/logo.png" alt="Logo">
+            </a>
+            <div class="menu-dropdown" id="menu-dropdown">
+                <img width="20px" height="20px" src="/static/media/img/dropdown.png"
+                    alt=">">
+            </div>
+            <div class="navigation__list" id="navigation__list">
+                <div class="navigation__item">
+                    <a class="navigation__link" id="tab1" href="http://localhost:5000/discover">Discover</a>
+                </div>
+               
+                <div class="navigation__item">
+                    <a class="navigation__link" href="http://localhost:5000/termservices">Terms of Service</a>
+                </div>
+            </div>
+            <div class="navigation__list navigation__user">
+                <div class="navigation__item">
+                    <!--fix line below-->
+                    <a class="navigation__link" href="/pages/login.html"></a>
+                </div>
+            </div>
+            <script src="/static/js/dropdown.js"></script>
+            <script src="/static/js/show-on-scroll.js"></script>
+            <script src="/static/js/posting.js"></script>
+        </nav>
+    </header>
+    <center>
+    <div class="sec2">
+        <h1 style="margin-top: 14px;margin-bottom: 6px;margin-top: 0px; line-height: 55px;">Log In</h1>
+     </div>
+    </center>
+
+
+        <center>
+            <p>{{ error }}</p>
+        </center>
+        
+
+        <div class = "logbox">
+           <div class = "innerbox">
+              <form action = "http://localhost:5000/login" method = "post">
+                 <div class = "username">
+                    <p>Username:</p>
+                    <p><input type = "text" id="username" name = "username" placeholder="Enter Username" /></p>
+                 </div>
+                 <div class = "password">
+                    <p>Password:</p>
+                    <p><input type = "text" id="password" name = "password" placeholder="Enter Password"/></p>
+                 </div>
+                 <hr>
+  
+                 <div class="submit_button">
+                    <p><input type = "submit" value = "Log In" class="submit" /></p>
+                 </div>
+                 <h2>New to InnovateLane? Sign up <a href="http://localhost:5000/flasktestpythoncode">here</a></h1>
+              </form>
+           </div>
+        </div>
+  
+     </body>
+</html>

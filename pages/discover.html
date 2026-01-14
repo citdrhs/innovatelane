@@ -1,0 +1,71 @@
+<! DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnovateLane</title>
+    <link rel="stylesheet" href="/static/css/discover.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="./static/media/img/logo.jpg">
+</head>
+
+<body>
+    <header>
+        <nav id="navigation" class="navigation">
+            <div class="navigation__link" href="{{ url_for('homeclone') }}">
+                <a href="{{ url_for('homeclone') }}">
+                    <img class="logo" src="/static/media/img/logo.png" alt="Logo">
+                </a>
+            </div>
+            <div class="menu-dropdown" id="menu-dropdown">
+                <img width="20px" height="20px" src="/static/media/img/dropdown.png"
+                    alt=">">
+            </div>
+            <div class="navigation__list" id="navigation__list">
+                <div class="navigation__item">
+                    <a class="navigation__link" href="{{ url_for('discover') }}">Discover</a>
+                </div>
+              
+                <div class="navigation__item">
+            <!--  <a class="navigation__link" href="/pages/termservices.html">Terms of Service</a> -->
+                    <a class="navigation__link" href="{{ url_for('termservices') }}">Terms of Service</a>
+                </div>
+            </div>
+            <div class="navigation__list navigation__user">
+                <div class="navigation__item">
+                    <a class="navigation__link" href="{{ url_for('login') }}">{{ username }}</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="sec1" style="margin-bottom: 61px;">
+    <h1 style="color:white">Check Out Projects In Your Community</h1>
+</div>
+    <!--Grid of posts-->
+    <div id="post-grid" class="post-grid"></div>
+
+    <!-- Floating + button -->
+    <button id="add-post-btn" class="floating-btn">+</button>
+
+    <!-- Popup Form -->
+    <div id="popup" class="popup hidden">
+        <div class="popup-content">
+            <h2 id="popup-title">Create a Post</h2>
+            <form id="post-form">
+                <input type="text" id="title" placeholder="Project title" required>
+                <input type="text" id="author" placeholder="Your name" required>
+                <textarea id="description" placeholder="Describe your idea..." required></textarea>
+                <input type="url" id="link" placeholder="Project link (optional)">
+                <input type="text" id="contact" placeholder="Contact info (optional)">
+                <input type="file" id="image" accept="image/*" placeholder="Upload image (optional)">
+                <button type="submit" id="submit-btn">Post</button>
+                <button type="button" id="close-popup" class="close-btn">Cancel</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="/static/js/script.js"></script>
+</body>
+
+</html>

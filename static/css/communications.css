@@ -1,0 +1,147 @@
+    body {
+        background-color: rgb(23, 68, 145);
+    }
+
+      /* Title Format */
+      h1 {
+        text-align: center;
+        font-size: 36px;  /* Larger font size */
+        color: white;
+      }
+  
+      p {
+        font-size: 20px;
+      }
+
+      .container {
+        display: flex;
+        height: 100vh;
+        margin-top: 20px;
+      }
+  
+  
+      /* Sidebar Format */
+      .sidebar {
+        width: 30%;
+        background-color: #fff; /* White */
+        border-right: 2px solid #ddd; /* Light Gray */
+        padding: 10px;
+        overflow-y: auto; /* If messages overflow, make chat scrollable */
+      }
+  
+  
+      .chat-list {
+        list-style-type: none;
+        padding: 0;
+      }
+  
+  
+      .chat-item {
+        padding: 10px;
+        border-bottom: 1px solid #ddd; /* Light Gray */
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+  
+  
+      .chat-item:hover {
+        background-color: #f0f0f0; /* Very Light Gray */
+      }
+  
+  
+      /* Main chat area (where messages will appear) */
+      .chat-area {
+        flex-grow: 1;
+        background-color: rgb(22, 16, 76);; /* Black background */
+        color: #fff; /* White text */
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; /* Make sure new messages are at the bottom */
+        border-left: 2px solid #ddd; /* Light Gray */
+      }
+  
+  
+      /* Display chat messages with boxes (formatting) */
+      .messages {
+        flex-grow: 1;
+        overflow-y: auto;
+        margin-bottom: 20px;
+      }
+  
+  
+      .message {
+        margin-bottom: 15px;
+        max-width: 60%; /* Limit message box width */
+        padding: 10px;
+        border-radius: 8px;
+        background-color: rgb(23, 68, 145); /* Light gray background for received messages */
+        word-wrap: break-word;
+        text-align: center; /* Center the text */
+      }
+  
+  
+      /* Sent messages */
+      .message.sent {
+        margin-left: auto;
+        background-color: rgb(55, 109, 203); /* Light blue background for sent messages */
+        border-radius: 10px;
+        text-align: center; /* Center the text */
+      }
+  
+  
+      /* Received messages */
+      .message.received {
+        background-color: rgb(22, 55, 113); /* White */
+        color: #000; /* Black */
+        border-radius: 10px;
+        text-align: center; /* Center the text */
+      }
+  
+  
+      /* Message Input */
+      .input-box {
+        display: flex;
+        border-top: 2px solid white;
+        padding-top: 10px;
+      }
+  
+  
+      .input-box input {
+        flex-grow: 1;
+        padding: 10px;
+        border: 1px solid white;
+        border-radius: 5px;
+        margin-right: 10px;
+        background-color: #fff; /* White background */
+        color: #000; /* Black text inside the text box */
+      }
+  
+  
+      .input-box button {
+        background-color: rgb(23, 68, 145);
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+  
+  
+      .input-box button:hover {
+        background-color: rgb(29, 80, 167);
+      }
+  
+  
+      /* Sidebar Chat Names */
+      .chat-item {
+        font-size: 18px;
+        background-color: rgb(23, 68, 145); /* Light blue background */
+        color: white; /* Dark blue color for text */
+        border-radius: 5px;
+      }
+  
+  
+      .chat-item:hover {
+        background-color: rgb(29, 80, 167); /* Slightly darker blue when hovered over chats on the left */
+      }

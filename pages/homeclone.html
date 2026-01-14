@@ -25,16 +25,16 @@
             </div>
             <div class="navigation__list" id="navigation__list">
                 <div class="navigation__item">
-                    <a class="navigation__link" id="tab1" href="http://localhost:5000/discover">Discover</a>
+                    <a class="navigation__link" id="tab1" href="{{ url_for('discover') }}">Discover</a>
                 </div>
-
+          
                 <div class="navigation__item">
-                    <a class="navigation__link" href="http://localhost:5000/termservices">Terms of Service</a>
+                    <a class="navigation__link" href="{{ url_for('termservices') }}">Terms of Service</a>
                 </div>
             </div>
             <div class="navigation__list navigation__user">
                 <div class="navigation__item">
-                    <a class="navigation__link" href="/pages/login.html">Log In</a>
+                    <a class="navigation__link" href="{{ url_for('login') }}">{{ username }}</a>
                 </div>
             </div>
             <script src="./static/js/dropdown.js"></script>
@@ -67,13 +67,13 @@
         <nav id="footer" class="footer">
             <div class="footer__list" id="footer__list">
                 <div class="footer__item">
-                    <a class="footer__link" href="http://localhost:5000/discover">Check out the Discover page</a>
+                    <a class="footer__link" href="{{ url_for('discover') }}">Check out the Discover page</a>
                 </div>
                 <div class="footer__item">
-                    <a class="footer__link" href="http://localhost:5000/communications">Discuss with your peers</a>
+                    <a class="footer__link" href="{{ url_for('communications') }}">Discuss with your peers</a>
                 </div>
                 <div class="footer__item">
-                    <a class="footer__link" href="http://localhost:5000/termservices">Read Terms of Service</a>
+                    <a class="footer__link" href="{{ url_for('termservices') }}">Read Terms of Service</a>
                 </div>
             </div>
 

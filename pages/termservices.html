@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnovateLane</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/discover.css">
+    <link rel="stylesheet" href="/static/css/slide-in.css">
+    <link rel="icon" href="/media/img/logo.png">
+</head>
+
+<body>
+    <header class="header show-on-scroll">
+        <nav id="navigation" class="navigation">
+            <a class="navigation__link" href="{{ url_for('homeclone') }}">
+                <img class="logo"
+                    src="/static/media/img/logo.png" alt="Logo">
+            </a>
+            <div class="menu-dropdown" id="menu-dropdown">
+                <img width="20px" height="20px" src="/static/media/img/dropdown.png"
+                    alt=">">
+            </div>
+            <div class="navigation__list" id="navigation__list">
+                <div class="navigation__item">
+                    <a class="navigation__link" href="{{ url_for('discover') }}">Discover</a>
+                </div>
+             
+                <div class="navigation__item">
+                    <a class="navigation__link" href="{{ url_for('termservices') }}">Terms of Service</a>
+                </div>
+            </div>
+            <div class="navigation__list navigation__user">
+                <div class="navigation__item">
+                    <a class="navigation__link" href="{{ url_for('login') }}">{{ username }}</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="sec2">
+        <h1 style="margin-top: 14px;margin-bottom: 6px;margin-top: 0px; line-height: 120px; color: white">Terms of Sevice</h1>
+     </div>
+
+
+<p style="text-align: left; margin-left: 100px;">
+    Innovate Lane is intended to be a welcoming userbase for anyone with a passion. That being said, our site has specific guidelines that it requests users abide by, for the safety and satisfaction of all Deep Run Students.
+    <br>
+    <br>
+    1. Keep usernames and contact information appropriate. Prohibited elements of these fields include, but are not limited to:
+    <br>  
+    <br>  
+    - Swears and/or Slurs
+    <br>
+    - Fake names meant to impersonate students or staff
+    <br>
+    - References to NSFW media
+    <br>
+    - Links directing towards pages deemed inappropriate
+    <br>
+    - Hateful messages directed at any person or group
+    <br>
+    <br>
+    2. Keep forum posts relevant. They are designed to aide in the formation of student projects, help students locate resources, find individuals with similar interests, and other productive activities. Posts may be deleted if they contain dating-requests,___, or similar off-topic antics. Additionally, Forum posts cannot be an invitation to violate school integrity or participate in illegal activities.
+    <br>
+    <br>
+    3. Malware is strictly prohibited. Any user who attempts to distribute malicious links or inappropriate imagery via any means will be subject to disciplinary action.
+    <br>
+    <br>
+    4. Finally, don't spread rumors or talk negatively about people behind the guise of anonymity. Everyone has somebody they don't like, but whether jokingly or not, making fun at others' expense is a serious violation of Wildcat Spirit (and morality).
+    <br>
+    <br>
+    Thank you for understanding our policies. Your choice to stay within the Terms and Services Agreement keeps Innovate Lane a safe site for everyone.
+
+
+</p>
+
+</body>

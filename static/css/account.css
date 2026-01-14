@@ -1,0 +1,309 @@
+body { 
+    background: url(/static/media/img/spacebg.jpg);
+    background-size: cover;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+    background-color: rgb(22, 16, 76);
+    margin: 0%;
+}
+
+label {
+    color: white;
+}
+
+a {
+    color:peru;
+}
+
+.navigation__link:hover {
+    color:peru
+}
+
+.sec1 {
+
+    margin-top: 50px;
+    margin-bottom: 60px;
+    background-color:rgb(23, 68, 145);
+    
+}
+
+.sec1 p{
+    margin-bottom: 60px;
+    margin-left: 8px;
+    line-height: 42.5px;
+}
+
+.sec2 {
+    background-color:rgb(23, 68, 145)
+}
+
+.desc {
+    background-color:rgb(23, 68, 145);
+    line-height: 55px;
+}
+
+.p-title {
+    background-color: white;
+    
+}
+
+.img-background {
+    float: right;
+    width: 28%;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#img-background {
+    position: absolute;
+    width: 100%;
+    height: 27%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    margin-top: 110px;
+    
+}
+
+.navigation {
+    z-index: 10;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    background-color: white;
+}
+
+.logo {
+    z-index: 10;
+    z-index: 2;
+    margin-left: 10px;
+    width: 100px;
+}
+
+.navigation__list,
+.menu-dropdown {
+    z-index: 10;
+    display: flex;
+    flex-flow: row nowrap;
+    flex-grow: 1;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.navigation__item {
+    z-index: 10;
+    margin-right: 7%;
+    text-align: center;
+}
+
+.navigation__user {
+    z-index: 10;
+    justify-content: right;
+    margin-right: 10px;
+}
+
+.navigation__link {
+    z-index: 2;
+    font-size: 35px;
+    color: rgb(23, 68, 145);
+    text-decoration: none;
+}
+
+.footer {
+    z-index: 10;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    background-color: white;
+}
+
+
+.footer__list {
+    z-index: 10;
+    display: flex;
+    flex-flow: row nowrap;
+    flex-grow: 1;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.footer__item {
+    z-index: 10;
+    margin-right: 7%;
+    margin-left: 7%;
+    text-align: center;
+}
+
+.footer__link {
+    z-index: 2;
+    font-size: 35px;
+    color: rgb(23, 68, 145);
+    text-decoration: none;
+}
+
+.img-intro{
+    border-radius: 10%;
+    overflow: hidden;
+}
+
+
+
+.logintitle {
+    margin-bottom: 0%;
+    color: white;
+
+}
+
+@media (max-width: 766px) {
+    .navigation__list {
+        flex-direction: column;
+        display: none;
+    }
+    .navigation__user {
+        display: flex;
+    }
+}
+
+@media (min-width: 765px) {
+    .menu-dropdown {
+        display: none;
+    }
+}
+
+.open {
+    display: flex;
+}
+
+h1{
+    margin-top: 7px;
+}
+
+hr {
+    border-top: 1px dashed white 
+}
+.logbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.innerbox {
+    display: flex;
+    margin-top: 15px;
+    position: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 10 px;
+    height: 10 px;
+    padding: 10px;
+    border: 5px solid white;
+    border-radius: 10px;
+    backdrop-filter: blur(3px);
+}
+
+.username {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 3px;
+}
+
+.password {
+    display: flex;
+    justify-content: space-evenly; 
+    margin: 3px;
+}
+
+.grade{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.choices {
+    display: flex;
+    justify-content: space-around;
+    margin: 3px;
+
+}
+
+.contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.contact_button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 5px;
+
+}
+
+.submit_button{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.submit{
+    width: 100px;
+    height:30px;
+}
+
+.username:hover {
+    color: peru;
+}
+
+.password:hover {
+    color: peru;
+}
+
+.grade:hover{
+    color: peru;
+}
+
+.contact:hover{
+    color:peru; 
+}
+
+
+.submit:hover{
+    color: peru;
+}
+
+/* Thanks to Stack Overflow for the information on transparency: https://stackoverflow.com/questions/20573549/make-text-input-box-transparent-should-be-simple */
+#username {
+    background-color: transparent;
+    border: 1px solid aliceblue;
+    border-radius: 7px;
+    color: white;
+}
+
+#password {
+    background-color: transparent;
+    border: 1px solid aliceblue;
+    border-radius: 7px;
+    color: white;
+}
+
+#username {
+    background-color: transparent;
+    border: 1px solid aliceblue;
+    border-radius: 7px;
+    color: white;
+}
+
+#contact {
+    background-color: transparent;
+    border: 1px solid aliceblue;
+    border-radius: 7px;
+    color: white;
+}

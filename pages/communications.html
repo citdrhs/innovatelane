@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnovateLane</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/discover.css">
+    <link rel="stylesheet" href="/static/css/slide-in.css">
+    <link rel="stylesheet" href="/static/css/communications.css">
+    <link rel="icon" href="/static/media/img/logo.png">
+</head>
+
+<body>
+    <header class="header show-on-scroll">
+        <nav id="navigation" class="navigation">
+            <a class="navigation__link" href="{{ url_for('homeclone') }}">
+                <img class="logo"
+                    src="/static/media/img/logo.png" alt="Logo">
+            </a>
+            <div class="menu-dropdown" id="menu-dropdown">
+                <img width="20px" height="20px" src="/static/media/img/dropdown.png"
+                    alt=">">
+            </div>
+            <div class="navigation__list" id="navigation__list">
+                <div class="navigation__item">
+                    <a class="navigation__link" href="{{ url_for('discover') }}">Discover</a>
+                </div>
+                
+                <div class="navigation__item">
+                    <a class="navigation__link" href="{{ url_for('termservices') }}">Terms of Service</a>
+                </div>
+            </div>
+            <div class="navigation__list navigation__user">
+                <div class="navigation__item">
+                    <a class="navigation__link" href="{{ url_for('login') }}">{{ username }}</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="center">
+        <h1>Communications Page</h1>
+      </div>
+    
+    
+      <!-- Main content section with a sidebar and chat area -->
+      <div class="container">
+        <!-- Sidebar with list of chats -->
+        <div class="sidebar">
+          <ul class="chat-list">
+            <li class="chat-item">Group Chat 1</li>
+            <li class="chat-item">Group Chat 2</li>
+            <li class="chat-item">Group Chat 3</li>
+            <li class="chat-item">Group Chat 4</li>
+          </ul>
+        </div>
+    
+    
+        <!-- Chat area where messages are displayed -->
+        <div class="chat-area">
+          <!-- Display area for chat messages -->
+          <div class="messages">
+            <div class="message sent">
+              <p>Hello, how are you?</p>
+            </div>
+            <div class="message received">
+              <p>I'm good, thanks! How about you?</p>
+            </div>
+            <div class="message sent">
+              <p>Doing great!</p>
+            </div>
+          </div>
+    
+    
+          <!-- Message input box -->
+          <div class="input-box">
+            <input type="text" placeholder="Type a message..." />
+            <button>Send</button>
+          </div>
+        </div>
+      </div>
+    
+    
+    </body>
+    </html>
+    
+    <script src="/static/js/show-on-scroll.js"></script>
+    <script src="/static/js/posting.js"></script>
+    <script src="/static/js/dropdown.js"></script>
+</body>
+
+</html>
